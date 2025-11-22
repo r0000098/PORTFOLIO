@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ranabir Goswami — Data Analyst</title>
+  <meta name="description" content="Portfolio of Ranabir Goswami — Data Analyst specializing in Python, SQL, Power BI, and data storytelling.">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#071426',
+            teal: '#0ea5a5',
+            indigoDeep: '#1e3a8a'
+          },
+          fontFamily: { inter: ['Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root { --glass-border: rgba(255,255,255,0.08); }
+    html,body{height:100%;}
+    body{
+      margin:0; font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; 
+      background: linear-gradient(180deg,#061226 0%,#071426 100%); color:#E6F0F6; -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale; scroll-behavior:smooth;
+    }
+
+    .glass{ background: linear-gradient(180deg, rgba(255,255,255,0.028), rgba(255,255,255,0.02)); backdrop-filter: blur(10px); border:1px solid var(--glass-border); border-radius:1rem; box-shadow:0 12px 30px rgba(2,6,23,0.6); }
+    .gradient-text{ background:linear-gradient(90deg,#0ea5a5,#1e3a8a); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+
+    /* card hover / subtle motion */
+    .card, .glass { transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s cubic-bezier(.2,.9,.2,1) }
+    .card:hover, .glass.card-hover:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 20px 45px rgba(2,6,23,0.6); }
+
+    .btn-view{ transition: transform .18s ease, box-shadow .18s ease; }
+    .btn-view:hover{ transform: translateY(-3px) scale(1.03); box-shadow: 0 8px 20px rgba(2,6,23,0.35); }
+
+    /* fade / reveal animations */
+    .reveal{ opacity:0; transform: translateY(20px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.show{ opacity:1; transform: translateY(0); }
+
+    .fade-in{ opacity:0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-in.visible{ opacity:1; transform: translateY(0); }
+
+    /* modal */
+    .modal-backdrop{ background: rgba(2,6,23,0.6); backdrop-filter: blur(6px); }
+
+    /* small helpers */
+    :focus{ outline: 2px dashed rgba(14,165,165,0.45); outline-offset:4px }
+
+    @media (max-width:768px){ .max-w-6xl{ padding-left:1rem; padding-right:1rem } }
+  </style>
+</head>
+
+<body>
+<header class="fixed top-4 w-full z-50">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="glass flex items-center justify-between p-4">
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-indigoDeep to-teal flex items-center justify-center font-bold text-lg">R</div>
+        <div class="leading-tight">
+          <h1 class="font-semibold text-base">Ranabir Goswami</h1>
+          <p class="text-xs opacity-80">Data Analyst</p>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-5 text-sm">
+        <a href="#home" class="hover:text-teal">Home</a>
+        <a href="#about" class="hover:text-teal">About</a>
+          <a href="#skills" class="hover:text-teal">Skills</a>
+        <a href="#projects" class="hover:text-teal">Projects</a>
+      <a href="#certifications" class="hover:text-teal">Certifications</a>
+        <a href="#training" class="hover:text-teal">Training</a>
+        <a href="#education" class="hover:text-teal">Education</a>
+        <a href="#contact" class="hover:text-teal">Contact</a>
+      </nav>
+
+      <a href="https://drive.google.com/file/d/13cf98MOCA9sQmejfOc9jnfn8OrOAwXQ8/view?usp=sharing" target="_blank" class="hidden md:inline-block bg-gradient-to-br from-teal to-indigoDeep px-4 py-2 rounded-md text-sm font-semibold">Resume</a>
+
+      <button id="menuBtn" class="md:hidden p-2 rounded-md hover:bg-white/6" aria-label="Open menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
+        </svg>
+      </button>
+    </div>
+
+    <div id="mobileMenu" class="mt-3 hidden glass p-3 rounded-lg">
+      <ul class="flex flex-col gap-2 text-sm">
+        <li><a href="#home" class="block px-3 py-2 rounded hover:bg-white/6">Home</a></li>
+        <li><a href="#about" class="block px-3 py-2 rounded hover:bg-white/6">About</a></li>
+        <li><a href="#projects" class="block px-3 py-2 rounded hover:bg-white/6">Projects</a></li>
+        <li><a href="#skills" class="block px-3 py-2 rounded hover:bg-white/6">Skills</a></li>
+        <li><a href="#certifications" class="block px-3 py-2 rounded hover:bg-white/6">Certifications</a></li>
+        <li><a href="#training" class="block px-3 py-2 rounded hover:bg-white/6">Training</a></li>
+        <li><a href="#education" class="block px-3 py-2 rounded hover:bg-white/6">Education</a></li>
+        <li><a href="#contact" class="block px-3 py-2 rounded hover:bg-white/6">Contact</a></li>
+        <li><a href="https://github.com/r0000098" target="_blank" class="block px-3 py-2 rounded hover:bg-white/6">GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main class="pt-32 pb-20 max-w-6xl mx-auto px-4">
+  <section id="home" class="grid md:grid-cols-2 gap-12 items-center reveal">
+    <div>
+      <h2 class="text-5xl font-extrabold gradient-text leading-tight">Hi, I'm Ranabir</h2>
+      <p class="mt-4 text-white/85 text-lg max-w-xl">I specialise in data cleaning, analysis, and visual storytelling using Python, SQL, Excel, Power BI, and Tableau. I enjoy transforming raw datasets into structured, meaningful insights that support business decisions.</p>
+
+      <div class="mt-6 flex gap-4">
+        <a href="#projects" class="bg-gradient-to-br from-teal to-indigoDeep px-5 py-2 rounded-lg font-semibold">Explore Work</a>
+        <a href="#contact" class="glass px-5 py-2 rounded-lg font-semibold">Contact</a>
+      </div>
+
+      <p class="mt-5 text-sm text-white/70">Bankura, West Bengal • <a href="mailto:ranabirgoswami74@gmail.com" class="underline">ranabirgoswami74@gmail.com</a></p>
+    </div>
+
+    <div class="flex justify-center">
+      <div class="glass p-1 rounded-xl max-w-xs w-full shadow-lg card card-hover">
+        <img src="ranabirimage.png" class="rounded-lg w-full h-100 object-cover" alt="Profile" onerror="this.src='https://via.placeholder.com/420x420?text=Your+Photo'">
+      </div>
+    </div>
+  </section>
+
+  <div class="my-14 h-px bg-white/10"></div>
+
+  <section id="about" class="glass p-8 reveal">
+    <h3 class="text-2xl font-bold gradient-text">About Me</h3>
+    <p class="mt-3 text-white/85 leading-relaxed max-w-3xl text-sm">I'm a detail-oriented analyst skilled in Python, SQL, and BI tools. I enjoy working on real business problems, cleaning complex datasets, building insights, and presenting findings in clear dashboards and reports.</p>
+  </section>
+
+  <div class="my-14 h-px bg-white/10"></div>
+
+  <section id="skills" class="reveal">
+    <h3 class="text-2xl font-bold gradient-text">Skills</h3>
+    <div class="mt-6 grid md:grid-cols-3 gap-6">
+      <div class="glass p-6 card"><h4 class="font-semibold">Data Visualization</h4><p class="text-sm text-white/80 mt-2">Power BI, Tableau, Matplotlib, Seaborn</p></div>
+      <div class="glass p-6 card"><h4 class="font-semibold">Programming & Databases</h4><p class="text-sm text-white/80 mt-2">Python, SQL, ETL, Pandas</p></div>
+      <div class="glass p-6 card"><h4 class="font-semibold">Statistical Analysis</h4><p class="text-sm text-white/80 mt-2">Regression, Hypothesis Testing</p></div>
+      <div class="glass p-6 card"><h4 class="font-semibold">BI & Reporting</h4><p class="text-sm text-white/80 mt-2">Dashboard Design, KPI Reporting</p></div>
+      <div class="glass p-6 card"><h4 class="font-semibold">Tools</h4><p class="text-sm text-white/80 mt-2">GitHub, Jupyter, VS Code</p></div>
+      <div class="glass p-6 card"><h4 class="font-semibold">Soft Skills</h4><p class="text-sm text-white/80 mt-2">Data Storytelling, Client Communication</p></div>
+    </div>
+  </section>
+
+  <div class="my-14 h-px bg-white/10"></div>
+
+  <section id="projects" class="fade-in mb-16">
+  <h2 class="text-3xl font-bold text-white mb-6">Projects</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <div class="card bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20" data-link="">
+      <h3 class="text-xl font-semibold text-white">Air Quality Analysis</h3>
+      <p class="text-white/80 mt-2">Analyzed historical AQI data, identified pollution spikes, and suggested policy improvements.</p>
+      <p class="text-white/60 mt-1 text-sm">Tools: Python (Pandas, Matplotlib , Seaborn)</p>
+    <a href="https://github.com/r0000098/AIR_QUALITY_ANALYSIS" target="_blank">
+      <button class="btn-view mt-3 bg-blue-500 text-white px-4 py-2 rounded-lg">
+        View Project
+      </button>
+    </a>
+    </div>
+
+    <div class="card bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20" data-link="">
+      <h3 class="text-xl font-semibold text-white">Telco Customer Churn Analysis</h3>
+      <p class="text-white/80 mt-2">Identified high-risk churn segments (42% month-to-month, 45% electronic check users) and proposed retention strategies.</p>
+      <p class="text-white/60 mt-1 text-sm">Tools: Python, Excel</p>
+    <a href="https://github.com/r0000098/Teco-Customer-Churn-Analysis" target="_blank">
+      <button class="btn-view mt-3 bg-blue-500 text-white px-4 py-2 rounded-lg">
+        View Project
+      </button>
+    </a>
+    </div>
+
+    <div class="card bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20" data-link="">
+      <h3 class="text-xl font-semibold text-white">Covid-19 in India Analysis</h3>
+      <p class="text-white/80 mt-2">Performed data cleaning, statistical trend analysis, and identified states with highest case and death counts.</p>
+      <p class="text-white/60 mt-1 text-sm">Tools: Python (Pandas, Matplotlib, Seaborn), Excel</p>
+    <a href="https://github.com/r0000098/COVID_19" target="_blank">
+      <button class="btn-view mt-3 bg-blue-500 text-white px-4 py-2 rounded-lg">
+        View Project
+      </button>
+    </a>
+    </div>
+
+  </div>
+</section>
+
+  <div class="my-14 h-px bg-white/10"></div>
+
+  <section id="certifications" class="glass p-8 reveal">
+    <h3 class="text-2xl font-bold gradient-text">Certifications</h3>
+    <div class="mt-4 grid md:grid-cols-2 gap-4">
+      <!-- Each item has a data-link attribute you can replace with the certificate URL -->
+      <div class="glass p-4 flex items-center justify-between" data-link="">
+        <div>
+          <div class="font-semibold">SQL Certification – Anudip Foundation</div>
+          <div class="text-sm text-white/70">Gained hands-on experience in SQL querying, database design, and data manipulation.</div>
+        </div>
+        <div class="flex gap-2">
+          <a href="https://drive.google.com/file/d/1GKryZkajCijhWW0xfC8LKKCLFKfwRW4W/view?usp=sharing" target="_blank">
+          <button class="btn-view inline-block px-3 py-1 rounded bg-gradient-to-br from-teal to-indigoDeep text-sm text-white" aria-label="View certificate">View</button>
+          </a>
+        </div>
+      </div>
+
+      <div class="glass p-4 flex items-center justify-between" data-link="">
+        <div>
+          <div class="font-semibold">Python Certification – Anudip Foundation</div>
+          <div class="text-sm text-white/70">Built a strong foundation in Python for data analysis, working with libraries such as Pandas and NumPy for data
+          wrangling and preprocessing.</div>
+        </div>
+        <div>
+          <a href="https://drive.google.com/file/d/1_t0KvSBeSXXvn67C9FsflKcrBVIB1qrY/view?usp=sharing" target="_blank">
+          <button class="btn-view inline-block px-3 py-1 rounded bg-gradient-to-br from-teal to-indigoDeep text-sm text-white">View</button>
+        </a>
+        </div>
+      </div>
+
+      <div class="glass p-4 flex items-center justify-between" data-link="">
+        <div>
+          <div class="font-semibold">Data Visualization Certification – Anudip Foundation</div>
+          <div class="text-sm text-white/70">Trained in creating insightful visualizations using Power BI, Tableau, Matplotlib, and Seaborn.</div>
+        </div>
+        <div>
+            <a href="https://drive.google.com/file/d/1V2AXasBuYVHtsRKGKPAQDX-x9KM5ToF_/view?usp=sharing" target="_blank">
+          <button class="btn-view inline-block px-3 py-1 rounded bg-gradient-to-br from-teal to-indigoDeep text-sm text-white">View</button>
+        </a>
+        </div>
+      </div>
+
+      <div class="glass p-4 flex items-center justify-between" data-link="">
+        <div>
+          <div class="font-semibold">Communication and Professional Behaviour - Anudip Foundation</div>
+          <div class="text-sm text-white/70">Developed practical skills in communication, teamwork, and workplace professionalism.</div>
+        </div>
+        <div>
+            <a href="https://drive.google.com/file/d/16qIM_Wqq3dp7Yn4FXIQGc_9bpfkP_tYd/view?usp=sharing" target="_blank">
+          <button class="btn-view inline-block px-3 py-1 rounded bg-gradient-to-br from-teal to-indigoDeep text-sm text-white">View</button></a>
+        </div>
+      </div>
+
+      <div class="glass p-4 flex items-center justify-between" data-link="">
+        <div>
+          <div class="font-semibold">Business Communication – Anudip Foundation</div>
+          <div class="text-sm text-white/70">Learned essential skills in business writing, negotiation, and corporate communication.</div>
+        </div>
+        <div>
+            <a href="https://drive.google.com/file/d/1MhohyL9lC4xEDO5wQRweo81pxP9EZCd3/view?usp=sharing" target="_blank">
+          <button class="btn-view inline-block px-3 py-1 rounded bg-gradient-to-br from-teal to-indigoDeep text-sm text-white">View</button></a>
+        </div>
+      </div>
+
+      <div class="glass p-4 flex items-center justify-between" data-link="">
+        <div>
+          <div class="font-semibold">Data Analytics Course – Anudip Foundation</div>
+          <div class="text-sm text-white/70">Completed comprehensive training covering SQL, Python, Power BI, data visualization, and foundational statistical
+          analysis for data-driven decision-making.</div>
+        </div>
+        <div>
+            <a href="https://drive.google.com/file/d/1pT-jGZ_duk_aY0rMi3xF-fCr9Ys5Yrv1/view?usp=sharing" target="_blank">
+          <button class="btn-view inline-block px-3 py-1 rounded bg-gradient-to-br from-teal to-indigoDeep text-sm text-white">View</button></a>
+        </div>
+      </div>
+
+      <div class="glass p-4 flex items-center justify-between" data-link="">
+        <div>
+          <div class="font-semibold">TCS iON Cognitive Assessment (April 2025)
+</div>
+          <div class="text-sm text-white/70">Achieved a score of 63.99%, demonstrating strengths in numerical ability, logical reasoning, and verbal aptitude.</div>
+        </div>
+        <div>
+            <a href="https://drive.google.com/file/d/1_t0KvSBeSXXvn67C9FsflKcrBVIB1qrY/view?usp=sharing" target="_blank"></a>
+          <button
+            class="btn-view inline-block px-3 py-1 rounded bg-gradient-to-br from-teal to-indigoDeep text-sm text-white">View</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="my-14 h-px bg-white/10"></div>
+
+  <section id="training" class="reveal">
+    <h3 class="text-2xl font-bold gradient-text">Training & Virtual Internships</h3>
+    <div class="mt-4 grid md:grid-cols-2 gap-4">
+      <div class="glass p-4 flex items-center justify-between" data-link="">
+        <div>
+          <div class="font-semibold">Data Analyst Intern — Labmentix Pvt. Ltd</div>
+          <div class="text-sm text-white/70">28/05/2025 - 28/06/2025</div>
+        </div>
+        <div>
+            <a href="https://drive.google.com/file/d/1yaPrcN7Cs_OM33Zz8sILrM7MGx6lD1hH/view?usp=sharing" target="_blank"><button class="btn-view inline-block px-3 py-1 rounded bg-gradient-to-br from-teal to-indigoDeep text-sm text-white">View</button></a></div>
+      </div>
+
+      <div class="glass p-4 flex items-center justify-between" data-link="">
+        <div>
+          <div class="font-semibold">Quantium Data Analytics Job Simulation (Forage)</div>
+          <div class="text-sm text-white/70">February, 2025</div>
+        </div>
+        <div>
+            <a href="https://drive.google.com/file/d/1KyH66KDf2i7ac8e_myWYo5SyT-J5JQot/view?usp=sharing" target="_blank"><button class="btn-view inline-block px-3 py-1 rounded bg-gradient-to-br from-teal to-indigoDeep text-sm text-white">View</button></a></div>
+      </div>
+
+      <div class="glass p-4 flex items-center justify-between" data-link="">
+        <div>
+          <div class="font-semibold">PwC Switzerland Power BI Job Simulation (Forage)</div>
+          <div class="text-sm text-white/70">February, 2025</div>
+        </div>
+        <div>
+            <a href="https://drive.google.com/file/d/1ye2QAcoLMXkUW1COWBG1rapkFYvZEq3z/view?usp=sharing" target="_blank"><button class="btn-view inline-block px-3 py-1 rounded bg-gradient-to-br from-teal to-indigoDeep text-sm text-white">View</button></a></div>
+      </div>
+
+      <div class="glass p-4 flex items-center justify-between" data-link="">
+        <div>
+          <div class="font-semibold">Deloitte Australia Data Analytics Job Simulation (Forage)</div>
+          <div class="text-sm text-white/70">February, 2025</div>
+        </div>
+        <div>
+            <a href="https://drive.google.com/file/d/1j7oTGQFEzRliWKZyvRWtoBi9YuOuBidA/view?usp=sharing" target="_blank"><button class="btn-view inline-block px-3 py-1 rounded bg-gradient-to-br from-teal to-indigoDeep text-sm text-white">View</button></a></div>
+      </div>
+
+      <div class="glass p-4 flex items-center justify-between" data-link="">
+        <div>
+          <div class="font-semibold">Accenture Data Analytics & Visualization Job Simulation (Forage)</div>
+          <div class="text-sm text-white/70">March, 2025</div>
+        </div>
+        <div>
+            <a href="https://drive.google.com/file/d/1uvxyEI3A6WPMeqAlzYp6xTuciWlz3_4a/view?usp=sharing" target="_blank"><button class="btn-view inline-block px-3 py-1 rounded bg-gradient-to-br from-teal to-indigoDeep text-sm text-white">View</button></a></div>
+      </div>
+
+      <div class="glass p-4 flex items-center justify-between" data-link="">
+        <div>
+          <div class="font-semibold">Financial Analyst Job Simulation (Forage)</div>
+          <div class="text-sm text-white/70">February, 2025</div>
+        </div>
+        <div>
+            <a href="https://drive.google.com/file/d/1nNWh2WoEB6VqHaaxKVYLzf1gYgqHe3rH/view?usp=sharing" target="_blank"><button class="btn-view inline-block px-3 py-1 rounded bg-gradient-to-br from-teal to-indigoDeep text-sm text-white">View</button></a></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="my-14 h-px bg-white/10"></div>
+
+  <section id="education" class="fade-in mb-16">
+  <h2 class="text-3xl font-bold text-white mb-6">Education</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <div class="card bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20">
+      <h3 class="text-2xl font-semibold text-white">Triveni Devi Bhalotia College</h3>
+      <p class="text-white/80 mt-2">B.Sc. (Hons) in Computer Science – 76%</p>
+      <p class="text-white/60 text-sm">Raniganj • 2020 – 2023</p>
+    </div>
+
+    <div class="card bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20">
+      <h3 class="text-2xl font-semibold text-white">Bikna K.P.S Vidyapith High School</h3>
+      <p class="text-white/80 mt-2">Higher Secondary (Science) – 80%</p>
+      <p class="text-white/60 text-sm">Bankura • 2019 – 2020</p>
+    </div>
+
+    <div class="card bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20">
+      <h3 class="text-2xl font-semibold text-white">Narrah High School</h3>
+      <p class="text-white/80 mt-2">Secondary – 71%</p>
+      <p class="text-white/60 text-sm">Bankura • 2017 – 2018</p>
+    </div>
+
+  </div>
+</section>
+
+  <div class="my-14 h-px bg-white/10"></div>
+
+  <section id="contact" class="reveal">
+    <h3 class="text-2xl font-bold gradient-text">Contact</h3>
+    <div class="grid md:grid-cols-2 gap-8 mt-6">
+      <form id="contactForm" action="https://formsubmit.co/ranabirgoswami74@gmail.com" method="POST" class="glass p-6 rounded-xl text-sm space-y-4">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="name" placeholder="Name" required class="w-full bg-transparent border rounded px-3 py-2" />
+        <input type="email" name="email" placeholder="Email" required class="w-full bg-transparent border rounded px-3 py-2" />
+        <textarea name="message" rows="5" placeholder="Message" required class="w-full bg-transparent border rounded px-3 py-2"></textarea>
+        <div class="flex gap-3">
+          <button type="submit" class="bg-gradient-to-br from-teal to-indigoDeep px-4 py-2 rounded-md font-semibold">Send Message</button>
+          <button type="reset" class="glass px-4 py-2 rounded-md">Reset</button>
+        </div>
+      </form>
+
+      <div class="glass p-6 rounded-xl text-sm text-white/80 space-y-2">
+        <p><strong>Email:</strong> <a href="mailto:ranabirgoswami74@gmail.com" class="underline">ranabirgoswami74@gmail.com</a></p>
+        <p><strong>Phone:</strong> +91-9064149326</p>
+        <p><strong>Location:</strong> Bankura, West Bengal</p>
+        <p><a href="https://github.com/r0000098" class="underline" target="_blank">GitHub</a></p>
+        <p><a href="https://linkedin.com/in/ranabir-goswami-307b72214" class="underline" target="_blank">LinkedIn</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="mt-16 text-center text-xs text-white/50">© 2025 Ranabir Goswami — Portfolio</footer>
+</main>
+
+<!-- lightweight modal used for showing certificate/training link or a message -->
+<div id="viewModal" class="hidden fixed inset-0 z-60 modal-backdrop flex items-center justify-center px-4">
+  <div class="glass p-6 rounded-2xl max-w-lg w-full">
+    <div class="flex items-start justify-between">
+      <h4 id="modalTitle" class="text-lg font-semibold">View item</h4>
+      <button id="modalClose" class="text-white/80">✕</button>
+    </div>
+    <p id="modalBody" class="mt-3 text-sm text-white/80">Link preview or message will appear here.</p>
+    <div class="mt-4 flex gap-3">
+      <a id="modalOpenLink" href="#" target="_blank" class="inline-block px-4 py-2 rounded bg-gradient-to-br from-teal to-indigoDeep text-white">Open Link</a>
+      <button id="modalClose2" class="px-4 py-2 rounded border">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // mobile menu toggle
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+  // reveal observer (single, named to avoid collisions)
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // fade-in observer for elements using .fade-in (keeps separate configuration)
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.18 });
+  document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
+  // Modal logic for "View" buttons
+  const viewModal = document.getElementById('viewModal');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalBody = document.getElementById('modalBody');
+  const modalOpenLink = document.getElementById('modalOpenLink');
+  const modalClose = document.getElementById('modalClose');
+  const modalClose2 = document.getElementById('modalClose2');
+
+  function openModal(title, bodyText, link) {
+    modalTitle.textContent = title || 'View item';
+    modalBody.textContent = bodyText || 'No further information available.';
+    if (link && link.trim() !== '') {
+      modalOpenLink.href = link;
+      modalOpenLink.style.display = 'inline-block';
+    } else {
+      modalOpenLink.style.display = 'none';
+      modalOpenLink.href = '#';
+    }
+    viewModal.classList.remove('hidden');
+  }
+
+  function closeModal() {
+    viewModal.classList.add('hidden');
+  }
+
+  modalClose?.addEventListener('click', closeModal);
+  modalClose2?.addEventListener('click', closeModal);
+  viewModal?.addEventListener('click', (e) => { if (e.target === viewModal) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  // wire up all .btn-view buttons — they look for the nearest parent with data-link attribute
+  document.querySelectorAll('.btn-view').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const parent = btn.closest('[data-link]');
+      const titleEl = parent?.querySelector('.font-semibold');
+      const title = titleEl ? titleEl.textContent.trim() : 'Item';
+      const link = parent?.getAttribute('data-link') || '';
+      const subtitleEl = parent?.querySelector('.text-sm');
+      const subtitle = subtitleEl ? subtitleEl.textContent.trim() : '';
+
+      if (link && link.trim() !== '') {
+        // open modal which allows user to open the link in new tab
+        openModal(title, subtitle, link);
+      } else {
+        // no link: open modal that instructs how to attach a link (editable by developer)
+        openModal(title, subtitle || 'No link attached yet. Replace the element\'s data-link attribute with the certificate URL to enable direct opening.', '');
+      }
+    });
+  });
+
+  // Smooth anchor nav (keeps mobile menu behaviour)
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const href = a.getAttribute('href');
+      if (href.length > 1) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (!mobileMenu.classList.contains('hidden')) mobileMenu.classList.add('hidden');
+      }
+    });
+  });
+
+  // small accessibility enhancement: focus trap when modal opens could be added later
+</script>
+</body>
+</html>
